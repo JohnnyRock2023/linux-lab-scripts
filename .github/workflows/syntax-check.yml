@@ -8,9 +8,9 @@ jobs:
   check:
     runs-on: ubuntu-26.04
     steps:
-      - name: Checkout repository
+      -name: Checkout repository
        uses: actions/checkout@4
-      - name: Check bash script syntax
+      -name: Check bash script syntax
         run: |
           for sh in "*.sh"; do
             echo "Checking script $sh"
