@@ -8,7 +8,7 @@ BLUE='\033[0;34m';
 RED='\033[0;31m';
 NC='\033[0m';
 
-[ -d "$TARGET_DIR" ] || { echo -e "${RED}Помилка${NC}: $TARGET_DIR не є директорією або не існує!" >&2; exit 1; }
+[ -d "$TARGET_DIR" ] || { echo -e "${RED}Помилка${NC}: $TARGET_DIR не є директорією або не існує!!!" >&2; exit 1; }
 
 cf_usage() {
     echo "Count_files function usage: $0 [-e ext] [-t type] [-m +-days] [-r] [-s]" >&2
@@ -78,7 +78,7 @@ echo -e "  Директорії, модифіковані за останню д
 echo -e "  Символічні посилання: ${GREEN}$links${NC}"
 echo -e "  Символічні посилання (рекурсивно): ${BLUE}$rec_links${NC}"
 echo -e "  Символічні посилання, модифіковані за останню добу: ${RED}$modified_links${NC}"
-echo -e "  -------------------------"
+echo -e "  -----------------------------------------"
 echo -e "  Загальний розмір файлів з розширенням .conf: ${GREEN}$files_size${NC} Байт"
 echo -e "  Загальний розмір файлів з розширенням .conf (рекурсивно): ${BLUE}$rec_files_size${NC} Байт"
 
