@@ -8,11 +8,12 @@ jobs:
   check:
     runs-on: ubuntu-26.04
     steps:
-      -name: Checkout repository
-       uses: actions/checkout@4
-      -name: Check bash script syntax
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check bash script syntax
         run: |
-          for sh in "*.sh"; do
+          for sh in *.sh; do
             echo "Checking script $sh"
             bash -n "$sh"
           done
