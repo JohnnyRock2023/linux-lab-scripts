@@ -35,16 +35,16 @@ count_files() {
     done
     shift  $((OPTIND-1))
 
-    depth=()
+    local depth=()
     [ "$RECURSIVE" -eq 1 ] || depth=(-maxdepth 1)
 
-    name=()
+    local name=()
     [ -z "$EXT" ] || name=(-name "*.$EXT")
 
-    fType=()
+    local fType=()
     [ -z "$FTYPE" ] || fType=(-type "$FTYPE")
 
-    modified=()
+    local modified=()
     [ -z "$MODIFIED" ] || modified=(-mtime "$MODIFIED")
 
     if [ "$DATA" = "s" ]; then
@@ -79,8 +79,8 @@ echo -e "  Символічні посилання: ${GREEN}$links${NC}"
 echo -e "  Символічні посилання (рекурсивно): ${BLUE}$rec_links${NC}"
 echo -e "  Символічні посилання, модифіковані за останню добу: ${RED}$modified_links${NC}"
 echo -e "  -------------------------"
-echo -e "  Загальний розмір файлів з розширенням .conf: ${GREEN}$files_size${NC} Bytes"
-echo -e "  Загальний розмір файлів з розширенням .conf (рекурсивно): ${BLUE}$rec_files_size${NC} Bytes"
+echo -e "  Загальний розмір файлів з розширенням .conf: ${GREEN}$files_size${NC} Байт"
+echo -e "  Загальний розмір файлів з розширенням .conf (рекурсивно): ${BLUE}$rec_files_size${NC} Байт"
 
 exit 0
 
