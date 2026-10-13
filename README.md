@@ -22,9 +22,7 @@
 - `count-files.spec` - spec-файл (версія 2.0, історія змін у `%changelog`)
 - `count_files.1` - man-сторінка
 - `count_files.conf` - конфігураційний файл
-- `sources/` - tar-архіви вихідників (`count-files-1.0.tar.gz`, `count-files-2.0.tar.gz`)
 - `packages/` - зібрані пакети (1.0 і 2.0, `.src.rpm`)
-- `screenshots/` - скріншоти виконання
 
 ### Збірка
 
