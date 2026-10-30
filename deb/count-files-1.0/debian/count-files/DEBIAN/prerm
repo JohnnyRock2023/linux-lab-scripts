@@ -1,0 +1,12 @@
+#!/bin/bash
+set -e
+
+case "$1" in
+    remove)
+        echo "Removing count-files..."
+        ;;
+esac
+
+
+
+exit 0

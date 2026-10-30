@@ -1,0 +1,45 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Thu, 29 Oct 2026 17:45:50 +0000
+Source: count-files
+Architecture: source
+Version: 2.0+ppa2
+Distribution: noble
+Urgency: medium
+Maintainer: Johnny <kutsenkoroma147@gmail.com>
+Changed-By: Johnny <kutsenkoroma147@gmail.com>
+Changes:
+ count-files (2.0+ppa2) noble; urgency=medium
+ .
+   * Initial release.
+Checksums-Sha1:
+ 3fee2e8c7440bd7a2e452b1e2ad247b2b6025fac 1493 count-files_2.0+ppa2.dsc
+ 9815faaa84d880d33113991ca7a711210aa90d19 10580 count-files_2.0+ppa2.tar.xz
+ 38fed6e6ca7f736931c22ba1ca1503db4916f9dd 5551 count-files_2.0+ppa2_source.buildinfo
+Checksums-Sha256:
+ 4f3fad036a6ef325c39c2a5f6da43f66432b9b56a70a3b0f7631db3821a70cd4 1493 count-files_2.0+ppa2.dsc
+ cf778a682a160330f8faff421114f2a89962aad0918bc52466bc58667132c85d 10580 count-files_2.0+ppa2.tar.xz
+ 795eb4b49c5d51ab046f6bc150745178e9b6fb8fa7a45a7a115d90dce72237a2 5551 count-files_2.0+ppa2_source.buildinfo
+Files:
+ e9ed785255bf1bda5a700a875a8e1067 1493 utils optional count-files_2.0+ppa2.dsc
+ f1c1eca51e1332d71e26cfeb3ac860ea 10580 utils optional count-files_2.0+ppa2.tar.xz
+ 13a68203af6f9d00111a68c651f79ed7 5551 utils optional count-files_2.0+ppa2_source.buildinfo
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEEzUBFRo0T2U/n7ZjGjC/2fY2ydPcFAmrkiVoACgkQjC/2fY2y
+dPcCfg/8CGlJFKulpHoxXgr7tSwk3cnGMNyzy7JiVqhCceEp4XIzq6irl2khlbAS
+0Vyhn/X28a2jWJVi1UmAnk+M6C7+DeJJFfeb5OcMD2yrcHyItJdYoWD0xvDbMxbb
+CRobocfA55eiErxKFOziaNe+q5Sy6f+kR4Sh8TWVTi2CZdomdrKbTU4b8Xah9Y/j
+Jv6ERoXoH8Bc8i3Ki6spqt7dqPOFeKveSe7HIo4VsmuMgICBgcjJCTHMgKuRXbzL
+HpwZAhV+4PLzhmDWntodmpoNgnXqmQMNAZ/tCSh1Cw37XmPggXMAQpXR1u/CXnMk
+4gwIozRxh/nryBSpG/JsA3jGD2Qzrrq1w893gWidXYtP9XXgUvCujlgIfw/cbu5O
+4JIMZMOx+xADXJZIXFPDIlI9U0YgE9jgyZysXEHL0S4d54zuEgXwi+Ppjn2FEVcO
+F30MPYFk/sFKWAASzByHPICo6trQiERVOo4DBlydLCBMBwujy0QMMRCfvf1MLmRN
+/REWndTYCbEy7aEFyPgT3oC6xIzQcbLKEAYK5Nc8kpP/eN/MMJWeKl8+m4VE33Pc
+5aWqZF5wtTWeXchlaASvAAsdVimba3LubuC9lK5X3bFXCcVtwrNx1esmo6lOg2EB
+X+x/wfMId7ONGXj+ue7jWyMPh7MxQeyMN+6pD81rySJLzB0yCbQ=
+=oqro
+-----END PGP SIGNATURE-----

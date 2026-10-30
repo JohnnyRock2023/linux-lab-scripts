@@ -1,0 +1,25 @@
+Format: 1.8
+Date: Thu, 29 Oct 2026 17:45:50 +0000
+Source: count-files
+Binary: count-files
+Architecture: all
+Version: 1.0-1
+Distribution: unstable
+Urgency: medium
+Maintainer: Johnny <kutsenkoroma147@gmail.com>
+Changed-By: Johnny <kutsenkoroma147@gmail.com>
+Description:
+ count-files - a script to count files in a specified directory or,
+Changes:
+ count-files (1.0-1) unstable; urgency=medium
+ .
+   * Initial release.
+Checksums-Sha1:
+ 00902a063ab8202e7a50c54dcbe21aea4076899d 3660 count-files_1.0-1_all.deb
+ 2fe413d85ce9cadd498cfba6efa9c3801d262b4f 4685 count-files_1.0-1_amd64.buildinfo
+Checksums-Sha256:
+ caefab6082bb5e46041020ad69a500222f085bda44ef78ed131f96e0b0ba802a 3660 count-files_1.0-1_all.deb
+ cc35457d4304540fceb08f69763a666a9f14eaf8a80d50a18d6966286c9959e7 4685 count-files_1.0-1_amd64.buildinfo
+Files:
+ 3a57a3a05ae7c9f75ff57a0fbbcea374 3660 utils optional count-files_1.0-1_all.deb
+ 5ebf473b5d7d5d346dde3c84d8ee803c 4685 utils optional count-files_1.0-1_amd64.buildinfo

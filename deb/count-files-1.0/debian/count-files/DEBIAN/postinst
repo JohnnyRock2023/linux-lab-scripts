@@ -1,0 +1,12 @@
+#!/bin/bash
+set -e
+
+case "$1" in
+    configure)
+        echo "count-files has been installed successfully."
+        ;;
+esac
+
+
+
+exit 0
