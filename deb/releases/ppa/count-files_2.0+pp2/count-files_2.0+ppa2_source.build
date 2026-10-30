@@ -1,0 +1,51 @@
+ dpkg-buildpackage -us -uc -ui -S
+dpkg-buildpackage: info: source package count-files
+dpkg-buildpackage: info: source version 2.0+ppa2
+dpkg-buildpackage: info: source distribution noble
+dpkg-buildpackage: info: source changed by Johnny <kutsenkoroma147@gmail.com>
+ dpkg-source --before-build .
+ debian/rules clean
+dh clean
+   dh_clean
+ dpkg-source -b .
+dpkg-source: info: using source format '3.0 (native)'
+dpkg-source: info: building count-files in count-files_2.0+ppa2.tar.xz
+dpkg-source: info: building count-files in count-files_2.0+ppa2.dsc
+ dpkg-genbuildinfo --build=source -O../count-files_2.0+ppa2_source.buildinfo
+ dpkg-genchanges --build=source -O../count-files_2.0+ppa2_source.changes
+dpkg-genchanges: info: including full source code in upload
+ dpkg-source --after-build .
+dpkg-buildpackage: info: source-only upload: Debian-native package
+Now running lintian count-files_2.0+ppa2_source.changes ...
+E: count-files changes: bad-distribution-in-changes-file noble
+E: count-files source: debian-rules-is-dh_make-template [debian/rules:22]
+W: count-files source: dh-make-template-in-source [debian/README.Debian.ex]
+W: count-files source: dh-make-template-in-source [debian/README.ex]
+W: count-files source: dh-make-template-in-source [debian/README.source.ex]
+W: count-files source: dh-make-template-in-source [debian/count-files-docs.docs.ex]
+W: count-files source: dh-make-template-in-source [debian/count-files.cron.d.ex]
+W: count-files source: dh-make-template-in-source [debian/count-files.doc-base.ex]
+W: count-files source: dh-make-template-in-source [debian/gbp.conf.ex]
+W: count-files source: dh-make-template-in-source [debian/gitignore.ex]
+W: count-files source: dh-make-template-in-source [debian/manpage.1.ex]
+W: count-files source: dh-make-template-in-source [debian/manpage.md.ex]
+W: count-files source: dh-make-template-in-source [debian/manpage.sgml.ex]
+W: count-files source: dh-make-template-in-source [debian/manpage.xml.ex]
+W: count-files source: dh-make-template-in-source [debian/postinst.ex]
+W: count-files source: dh-make-template-in-source [debian/postrm.ex]
+W: count-files source: dh-make-template-in-source [debian/preinst.ex]
+W: count-files source: dh-make-template-in-source [debian/prerm.ex]
+W: count-files source: dh-make-template-in-source [debian/salsa-ci.yml.ex]
+Finished running lintian.
+Now signing changes and any dsc files...
+long key IDs are discouraged; please use key fingerprints instead
+ signfile dsc count-files_2.0+ppa2.dsc 8C2FF67D8DB274F7
+
+ fixup_buildinfo count-files_2.0+ppa2.dsc count-files_2.0+ppa2_source.buildinfo
+ signfile buildinfo count-files_2.0+ppa2_source.buildinfo 8C2FF67D8DB274F7
+
+ fixup_changes dsc count-files_2.0+ppa2.dsc count-files_2.0+ppa2_source.changes
+ fixup_changes buildinfo count-files_2.0+ppa2_source.buildinfo count-files_2.0+ppa2_source.changes
+ signfile changes count-files_2.0+ppa2_source.changes 8C2FF67D8DB274F7
+
+Successfully signed dsc, buildinfo, changes files

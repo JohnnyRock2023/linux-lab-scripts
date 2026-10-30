@@ -1,0 +1,11 @@
+Package: count-files
+Version: 2.0-1
+Architecture: all
+Maintainer: Johnny <kutsenkoroma147@gmail.com>
+Installed-Size: 21
+Depends: bash, coreutils, findutils
+Section: utils
+Priority: optional
+Homepage: https://github.com/JohnnyRock2023/linux-lab-scripts
+Description: a script to count files in a specified directory or,
+  if no parameter is provided, in the /etc directory

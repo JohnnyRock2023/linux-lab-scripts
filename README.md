@@ -79,6 +79,57 @@ sudo rpm -e count-files
    - читання налаштувань із `/etc/count_files.conf`.
 5. **Оновлено метадані пакета:** `Version: 2.0`, `Release: 1`, додано запис у `%changelog`.
 
+## DEB-пакет `count-files` (лабораторна №5)
+
+Пакет встановлює скрипт як команду `count_files`, який рахує файли, директорії та символічні посилання у вказаній директорії (за замовчуванням `/etc`). Поточна версія: **2.0-1**.
+
+### Вміст каталогу `deb/`
+
+- `count-files-1.0/` — вихідні файли першої версії пакета;
+- `count-files-2.0/` — вихідні файли другої версії пакета;
+- `count-files-2.0-ppa/` — вихідні файли для публікації в Launchpad PPA;
+- `releases/deb/` — зібрані DEB-пакети та супутні файли збірки;
+- `releases/ppa/` — вихідні пакети для завантаження до Launchpad PPA.
+
+### Збірка
+
+```bash
+sudo apt install build-essential devscripts debhelper dpkg-dev dh-make
+
+cd deb/count-files-2.0
+dpkg-buildpackage -us -uc -b
+```
+
+### Перевірка пакета
+
+```bash
+dpkg -I deb/releases/deb/count-files-2.0/count-files_2.0-1_all.deb
+dpkg -c deb/releases/deb/count-files-2.0/count-files_2.0-1_all.deb
+```
+
+### Встановлення, оновлення, видалення
+
+```bash
+sudo apt install ./deb/releases/deb/count-files-2.0/count-files_2.0-1_all.deb
+count_files                  # підрахунок у /etc
+count_files /var             # у вказаній директорії
+dpkg -s count-files          # інформація про пакет
+dpkg -L count-files          # список встановлених файлів
+sudo apt install --reinstall ./deb/releases/deb/count-files-2.0/count-files_2.0-1_all.deb
+sudo apt remove count-files
+sudo apt purge count-files
+```
+
+### Публікація в Launchpad PPA
+
+```bash
+cd deb/count-files-2.0-ppa
+debuild -S -kYOUR_GPG_KEY
+dput ppa ../count-files_2.0+ppa2_source.changes
+```
+
+PPA: https://launchpad.net/~johnnyrock2023/+archive/ubuntu/count-files
+
 ## Автор
 
 Студент групи ПІ-242,
