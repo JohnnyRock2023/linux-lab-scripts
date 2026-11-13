@@ -1,0 +1,15 @@
+#!/bin/bash
+set -e
+
+case "$1" in
+    configure)
+        echo "count-files has been installed successfully."
+        mkdir -p /var/log/count-files
+	echo "count-files has been installed on $(date)" >> "/var/log/count-files/install.log"
+	echo "Run 'count_files' to count files."
+        ;;
+esac
+
+#DEBHELPER#
+
+exit 0
