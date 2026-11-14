@@ -1,0 +1,13 @@
+#!/bin/bash
+set -e
+
+case "$1" in
+    remove)
+        echo "Removing count-files..."
+   	rm -rf "/var/log/count-files"
+        ;;
+esac
+
+#DEBHELPER#
+
+exit 0

@@ -1,0 +1,15 @@
+Source: count-files
+Section: utils
+Priority: optional
+Maintainer: Johnny <kutsenkoroma147@gmail.com>
+Rules-Requires-Root: no
+Build-Depends:
+ debhelper-compat (= 13),
+Standards-Version: 4.7.2
+Homepage: https://github.com/JohnnyRock2023/linux-lab-scripts
+
+Package: count-files
+Architecture: all
+Depends: ${misc:Depends}, bash, coreutils, findutils
+Description: a script to count files in a specified directory or,
+  if no parameter is provided, in the /etc directory
