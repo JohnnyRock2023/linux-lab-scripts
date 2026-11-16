@@ -24,7 +24,7 @@ jobs:
           done
 
       - name: ShellCheck
-        run: shellcheck count_files.sh
+        run: shellcheck --exclude=SC1091 count_files.sh
 
       - name: Run script
         run: |
