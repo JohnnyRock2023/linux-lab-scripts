@@ -45,9 +45,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Cache dnf packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            /var/cache/dnf
+            /var/cache/libdnf5
+          key: dnf-${{ matrix.image }}-${{ hashFiles('packaging/rpm/*.spec') }}
+          restore-keys: |
+            dnf-${{ matrix.image }}-
+
       - name: Install build tools
         run: |
-          dnf install -y rpm-build rpmdevtools
+          dnf install -y --setopt=keepcache=1 rpm-build rpmdevtools
 
       - name: Setup RPM build environment
         run: rpmdev-setuptree
@@ -84,9 +94,10 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install build tools
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y build-essential debhelper devscripts
+        uses: awalsh128/cache-apt-pkgs-action@v1
+        with:
+          packages: build-essential debhelper devscripts
+          version: 1.0
 
       - name: Prepare build directory
         run: |
@@ -98,7 +109,7 @@ jobs:
       - name: Build DEB
         run: |
           cd build/count-files-2.0
-          dpkg-buildpackage -us -uc -b
+          dpkg-buildpackage -us -uc -b -d
 
       - name: Upload DEB artifact
         uses: actions/upload-artifact@v4
