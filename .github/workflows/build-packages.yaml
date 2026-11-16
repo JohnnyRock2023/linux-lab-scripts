@@ -7,7 +7,30 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check bash script syntax
+        run: |
+          for sh in *.sh; do
+            echo "Checking script $sh"
+            bash -n "$sh"
+          done
+
+      - name: ShellCheck
+        run: shellcheck count_files.sh
+
+      - name: Run script
+        run: |
+          chmod +x count_files.sh
+          ./count_files.sh
+
   build-rpm:
     runs-on: ubuntu-latest
     container: fedora:latest
@@ -69,4 +92,3 @@ jobs:
         with:
           name: deb-package
           path: build/*.deb
-
