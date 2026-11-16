@@ -109,7 +109,7 @@ jobs:
       - name: Build DEB
         run: |
           cd build/count-files-2.0
-          dpkg-buildpackage -us -uc -b
+          dpkg-buildpackage -us -uc -b -d
 
       - name: Upload DEB artifact
         uses: actions/upload-artifact@v4
