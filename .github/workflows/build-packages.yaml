@@ -45,9 +45,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Enable dnf cache
-        run: echo "keepcache=True" > /etc/dnf/dnf.conf
-
       - name: Cache dnf packages
         uses: actions/cache@v4
         with:
@@ -60,7 +57,7 @@ jobs:
 
       - name: Install build tools
         run: |
-          dnf install -y rpm-build rpmdevtools
+          dnf install -y --setopt=keepcache=1 rpm-build rpmdevtools
 
       - name: Setup RPM build environment
         run: rpmdev-setuptree
