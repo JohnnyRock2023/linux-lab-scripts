@@ -93,11 +93,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install build tools
-        uses: awalsh128/cache-apt-pkgs-action@v1
+     - name: Create apt cache directory
+        run: mkdir -p $HOME/apt-cache
+
+      - name: Cache apt packages
+        uses: actions/cache@v4
         with:
-          packages: build-essential debhelper devscripts
-          version: 1.0
+          path: ~/apt-cache
+          key: apt-${{ matrix.os }}-${{ hashFiles('packaging/deb/debian/control') }}
+          restore-keys: |
+            apt-${{ matrix.os }}-
+
+      - name: Install build tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y -o Dir::Cache::archives=$HOME/apt-cache \
+            build-essential debhelper devscripts
 
       - name: Prepare build directory
         run: |
@@ -109,10 +120,29 @@ jobs:
       - name: Build DEB
         run: |
           cd build/count-files-2.0
-          dpkg-buildpackage -us -uc -b -d
+          dpkg-buildpackage -us -uc -b
 
       - name: Upload DEB artifact
         uses: actions/upload-artifact@v4
         with:
           name: deb-${{ matrix.os }}
           path: build/*.deb
+
+  release:
+    needs: [ build-rpm, build-deb ]
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download packages
+        uses: actions/download-artifact@v4
+        with:
+          path: distribution
+          merge-multiple: true
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            distribution/*.rpm
+            distribution/*.deb
+          generate_release_notes: true
