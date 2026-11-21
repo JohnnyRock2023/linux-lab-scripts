@@ -4,7 +4,7 @@ set -euo pipefail
 TARGET_DIR="${1:-/etc}"
 FILE_TYPE="conf"
 
-[ -f "/etc/count_files.conf" ] && source "/etc/count_files.conf" \
+[ -z "$1" ] && [ -f "/etc/count_files.conf" ] && source "/etc/count_files.conf" \
  && echo "Конфігураційний файл було успішно використано!"
 
 GREEN='\033[0;32m';
