@@ -128,6 +128,28 @@ dput ppa ../count-files_2.0+ppa2_source.changes
 
 PPA: https://launchpad.net/~johnnyrock2023/+archive/ubuntu/count-files
 
+
+## Jenkins lab
+
+Jenkins master + агенти (rpm, python, java, debian) у Docker Compose, nginx з HTTPS, бекапи.
+
+### Запуск
+1. `cp .env.example .env` і вписати `DOCKER_GID` (`getent group docker | cut -d: -f3`)
+2. Створити сертифікат:
+   ```bash
+   mkdir -p nginx/certs
+   openssl req -x509 -nodes -newkey rsa:4096 -days 365 \
+     -keyout nginx/certs/jenkins.key -out nginx/certs/jenkins.crt \
+     -subj "/CN=localhost" -addext "subjectAltName=DNS:localhost,IP:127.0.0.1"
+   ```
+3. `mkdir -p data/jenkins_home && sudo chown -R 1000:1000 data`
+4. `docker compose up -d jenkins-master nginx`
+5. У Jenkins створити вузли агентів, секрети вписати в `.env`
+6. `docker compose up -d --build`
+
+### Бекап
+`sudo backup/backup-jenkins.sh` (розклад через cron)
+
 ## Автор
 
 Студент групи ПІ-242,
