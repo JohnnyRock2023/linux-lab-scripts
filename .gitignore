@@ -14,3 +14,6 @@
 build/
 dist/
 
+jenkins/data/
+jenkins/.env
+jenkins/nginx/certs/

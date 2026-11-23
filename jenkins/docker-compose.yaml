@@ -1,0 +1,90 @@
+
+services:
+  jenkins-master:
+    build: ./master
+    container_name: jenkins-master
+    expose:
+      - "8080"
+    ports:
+      - "50000:50000"
+    volumes:
+      - ./data/jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+    networks:
+      - jenkins-net
+
+  jenkins-agent-rpm:
+    build: ./agent
+    container_name: jenkins-agent-rpm
+    depends_on:
+      - jenkins-master
+    environment:
+      - JENKINS_URL=http://jenkins-master:8080
+      - JENKINS_SECRET=${JENKINS_SECRET_RPM}
+      - JENKINS_AGENT_NAME=agent-rpm
+    networks:
+      - jenkins-net
+  
+  jenkins-agent-deb:
+    build: ./agent-deb
+    container_name: jenkins-agent-deb
+    depends_on:
+      - jenkins-master
+    environment:
+      - JENKINS_URL=http://jenkins-master:8080
+      - JENKINS_SECRET=${JENKINS_SECRET_DEB}
+      - JENKINS_AGENT_NAME=agent-deb
+    networks:
+      - jenkins-net
+  
+  jenkins-agent-python:
+    build: ./agent-python
+    container_name: jenkins-agent-python
+    restart: unless-stopped
+    depends_on: 
+      - jenkins-master
+    environment:
+      - JENKINS_URL=http://jenkins-master:8080
+      - JENKINS_AGENT_NAME=agent-python
+      - JENKINS_SECRET=${JENKINS_SECRET_PYTHON}
+      - JENKINS_AGENT_WORKDIR=/home/jenkins/agent
+    networks: 
+      - jenkins-net
+
+  jenkins-agent-java:
+    build: ./agent-java
+    container_name: jenkins-agent-java
+    restart: unless-stopped
+    depends_on:
+      - jenkins-master
+    environment:
+      - JENKINS_URL=http://jenkins-master:8080
+      - JENKINS_AGENT_NAME=agent-java
+      - JENKINS_SECRET=${JENKINS_SECRET_JAVA}
+      - JENKINS_AGENT_WORKDIR=/home/jenkins/agent
+    networks:
+      - jenkins-net
+      
+  nginx:
+    image: nginx:stable
+    container_name: jenkins-nginx
+    restart: unless-stopped
+    depends_on: 
+      - jenkins-master
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/jenkins.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/certs:/etc/nginx/certs:ro
+    networks: 
+      - jenkins-net
+
+volumes:
+  jenkins_home:
+
+networks:
+  jenkins-net:
+    driver: bridge
