@@ -93,7 +93,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-     - name: Create apt cache directory
+      - name: Create apt cache directory
         run: mkdir -p $HOME/apt-cache
 
       - name: Cache apt packages
